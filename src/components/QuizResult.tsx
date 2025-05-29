@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -151,28 +152,28 @@ const QuizResult = ({ score, name, setName, phone, setPhone, onConfirm }: QuizRe
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen bg-gray-50 p-2 sm:p-4">
       <div className="max-w-4xl mx-auto">
         {/* Celebration Header */}
-        <div className="text-center mb-8">
-          <div className="mb-6">
-            <Trophy className="h-20 w-20 text-yellow-500 mx-auto mb-4" />
-            <h1 className="text-4xl md:text-6xl font-bold text-blue-800 mb-4">
+        <div className="text-center mb-6 sm:mb-8 px-2">
+          <div className="mb-4 sm:mb-6">
+            <Trophy className="h-12 w-12 sm:h-20 sm:w-20 text-yellow-500 mx-auto mb-2 sm:mb-4" />
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-blue-800 mb-2 sm:mb-4">
               Parabéns! 🎉
             </h1>
           </div>
         </div>
 
         {/* Score Card */}
-        <Card className="mb-8 shadow-2xl border-0 bg-green-600 text-white">
-          <CardContent className="p-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Sua Pontuação Final</h2>
-            <div className="text-6xl font-bold mb-4 text-yellow-400">{score}</div>
-            <div className="flex justify-center space-x-1 mb-4">
+        <Card className="mb-6 sm:mb-8 shadow-2xl border-0 bg-green-600 text-white mx-2 sm:mx-0">
+          <CardContent className="p-4 sm:p-8 text-center">
+            <h2 className="text-xl sm:text-3xl font-bold mb-2 sm:mb-4">Sua Pontuação Final</h2>
+            <div className="text-4xl sm:text-6xl font-bold mb-2 sm:mb-4 text-yellow-400">{score}</div>
+            <div className="flex justify-center space-x-1 mb-2 sm:mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className={`h-8 w-8 ${
+                  className={`h-6 w-6 sm:h-8 sm:w-8 ${
                     i < Math.min(5, Math.floor(score / 40))
                       ? 'text-yellow-400 fill-current'
                       : 'text-yellow-200'
@@ -180,46 +181,46 @@ const QuizResult = ({ score, name, setName, phone, setPhone, onConfirm }: QuizRe
                 />
               ))}
             </div>
-            <div className="text-2xl font-bold mb-2 text-yellow-400">
+            <div className="text-lg sm:text-2xl font-bold mb-2 text-yellow-400">
               {scoreLevel.emoji} Classificação: {scoreLevel.level}
             </div>
           </CardContent>
         </Card>
 
         {/* Approval Message */}
-        <Card className="mb-8 shadow-lg border-green-200">
-          <CardContent className="p-8">
-            <div className="flex items-center justify-center mb-6">
-              <CheckCircle className="h-16 w-16 text-green-600 mr-4" />
+        <Card className="mb-6 sm:mb-8 shadow-lg border-green-200 mx-2 sm:mx-0">
+          <CardContent className="p-4 sm:p-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6 text-center sm:text-left">
+              <CheckCircle className="h-12 w-12 sm:h-16 sm:w-16 text-green-600 mb-2 sm:mb-0 sm:mr-4" />
               <div>
-                <h3 className="text-3xl font-bold text-green-600 mb-2">APROVADO! ✅</h3>
-                <p className="text-xl text-gray-700">
+                <h3 className="text-xl sm:text-3xl font-bold text-green-600 mb-1 sm:mb-2">APROVADO! ✅</h3>
+                <p className="text-base sm:text-xl text-gray-700">
                   Você está qualificado para receber leads quentes do MCMV em Natal/RN!
                 </p>
               </div>
             </div>
             
-            <div className="bg-green-50 p-6 rounded-lg border border-green-200">
-              <h4 className="font-bold text-lg text-green-800 mb-3 flex items-center">
-                <MapPin className="h-5 w-5 mr-2" />
+            <div className="bg-green-50 p-4 sm:p-6 rounded-lg border border-green-200">
+              <h4 className="font-bold text-base sm:text-lg text-green-800 mb-2 sm:mb-3 flex items-center">
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 🎯 O que você vai receber em Natal/RN:
               </h4>
-              <ul className="space-y-2 text-green-700">
-                <li className="flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2" />
-                  Sistema de IA qualificado para MCMV em Natal
+              <ul className="space-y-2 text-sm sm:text-base text-green-700">
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Sistema de IA qualificado para MCMV em Natal</span>
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2" />
-                  Leads pré-qualificados das zonas de Natal diariamente
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Leads pré-qualificados das zonas de Natal diariamente</span>
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2" />
-                  Funil personalizado para o mercado potiguar
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Funil personalizado para o mercado potiguar</span>
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2" />
-                  Suporte especializado em MCMV local
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Suporte especializado em MCMV local</span>
                 </li>
               </ul>
             </div>
@@ -227,16 +228,16 @@ const QuizResult = ({ score, name, setName, phone, setPhone, onConfirm }: QuizRe
         </Card>
 
         {/* Contact Form */}
-        <Card className="shadow-lg border-blue-200">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-bold text-center mb-6 text-blue-800">
+        <Card className="shadow-lg border-blue-200 mx-2 sm:mx-0">
+          <CardContent className="p-4 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6 text-blue-800">
               Confirme seus dados para ativação
             </h3>
             
-            <div className="space-y-6 mb-8">
+            <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
               <div>
-                <Label htmlFor="name" className="text-base font-semibold flex items-center mb-2 text-gray-800">
-                  <User className="h-5 w-5 mr-2 text-blue-600" />
+                <Label htmlFor="name" className="text-sm sm:text-base font-semibold flex items-center mb-2 text-gray-800">
+                  <User className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-blue-600" />
                   Nome Completo *
                 </Label>
                 <Input
@@ -245,14 +246,14 @@ const QuizResult = ({ score, name, setName, phone, setPhone, onConfirm }: QuizRe
                   placeholder="Digite seu nome completo"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="text-lg py-3 border-gray-300"
+                  className="text-base sm:text-lg py-2 sm:py-3 border-gray-300"
                   required
                 />
               </div>
               
               <div>
-                <Label htmlFor="phone" className="text-base font-semibold flex items-center mb-2 text-gray-800">
-                  <Phone className="h-5 w-5 mr-2 text-green-600" />
+                <Label htmlFor="phone" className="text-sm sm:text-base font-semibold flex items-center mb-2 text-gray-800">
+                  <Phone className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-green-600" />
                   WhatsApp *
                 </Label>
                 <Input
@@ -261,7 +262,7 @@ const QuizResult = ({ score, name, setName, phone, setPhone, onConfirm }: QuizRe
                   placeholder="(84) 99999-9999"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="text-lg py-3 border-gray-300"
+                  className="text-base sm:text-lg py-2 sm:py-3 border-gray-300"
                   required
                 />
               </div>
@@ -270,13 +271,13 @@ const QuizResult = ({ score, name, setName, phone, setPhone, onConfirm }: QuizRe
             <div className="text-center">
               <Button
                 onClick={onConfirm}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-6 px-12 rounded-lg text-xl shadow-lg"
+                className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 sm:py-6 px-6 sm:px-12 rounded-lg text-base sm:text-xl shadow-lg w-full sm:w-auto"
               >
-                <Phone className="mr-3 h-6 w-6" />
+                <Phone className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
                 Solicitar Ativação no WhatsApp
               </Button>
               
-              <p className="text-sm text-gray-500 mt-4">
+              <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 px-2">
                 📊 Seu resumo completo será enviado automaticamente<br/>
                 🔒 Seus dados estão 100% seguros e protegidos
               </p>
@@ -285,11 +286,13 @@ const QuizResult = ({ score, name, setName, phone, setPhone, onConfirm }: QuizRe
         </Card>
 
         {/* Regional Notice */}
-        <div className="text-center mt-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
-          <p className="text-blue-800 font-semibold flex items-center justify-center">
-            <MapPin className="h-5 w-5 mr-2" />
-            🎯 <strong>Funil Personalizado para Natal/RN:</strong> Este sistema foi especialmente configurado 
-            para o mercado imobiliário de Natal e adaptado às características locais do MCMV potiguar.
+        <div className="text-center mt-6 sm:mt-8 p-4 sm:p-6 bg-blue-50 rounded-lg border border-blue-200 mx-2 sm:mx-0">
+          <p className="text-xs sm:text-sm text-blue-800 font-semibold flex flex-col sm:flex-row items-center justify-center text-center">
+            <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mb-1 sm:mb-0 sm:mr-2" />
+            <span>
+              🎯 <strong>Funil Personalizado para Natal/RN:</strong> Este sistema foi especialmente configurado 
+              para o mercado imobiliário de Natal e adaptado às características locais do MCMV potiguar.
+            </span>
           </p>
         </div>
       </div>

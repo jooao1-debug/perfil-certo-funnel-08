@@ -188,7 +188,7 @@ const QuizContainer = () => {
     // Redirecionar para WhatsApp com resumo
     const summary = generateSummary();
     const message = encodeURIComponent(summary);
-    window.open(`https://wa.me/84991469591?text=${message}`, '_blank');
+    window.open(`https://w.app/perfilcerto?text=${message}`, '_blank');
   };
 
   const generateSummary = () => {
@@ -220,18 +220,20 @@ const QuizContainer = () => {
   const progress = ((currentQuestion) / questions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen bg-gray-50 p-2 sm:p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-blue-800 mb-4">Perfil Certo - Quiz Corretor Natal/RN</h1>
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-sm text-gray-600">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-lg sm:text-2xl font-bold text-blue-800 mb-2 sm:mb-4 px-2">
+            Perfil Certo - Quiz Corretor Natal/RN
+          </h1>
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-3 sm:mb-4 gap-2 px-2">
+            <span className="text-xs sm:text-sm text-gray-600">
               Pergunta {currentQuestion + 1} de {questions.length}
             </span>
             <div className="flex items-center space-x-2">
-              <Trophy className="h-5 w-5 text-yellow-500" />
-              <span className="font-bold text-lg text-gray-800">{score} pontos</span>
+              <Trophy className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500" />
+              <span className="font-bold text-base sm:text-lg text-gray-800">{score} pontos</span>
             </div>
           </div>
           <Progress value={progress} className="h-2" />
