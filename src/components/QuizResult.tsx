@@ -1,10 +1,11 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Trophy, Star, CheckCircle, Phone, User, MapPin } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
+import { Question } from './QuizContainer';
 
 interface QuizResultProps {
   score: number;
@@ -24,6 +25,130 @@ const QuizResult = ({ score, name, setName, phone, setPhone, onConfirm }: QuizRe
   };
 
   const scoreLevel = getScoreLevel();
+
+  const handleConfirmation = () => {
+    if (!name || !phone) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Por favor, preencha seu nome e telefone para continuar.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    // Redirecionar para o novo link do WhatsApp
+    const summary = generateSummary();
+    const message = encodeURIComponent(summary);
+    window.open(`https://w.app/perfilcerto?text=${message}`, '_blank');
+  };
+
+  const generateSummary = () => {
+    const questions: Question[] = [
+      {
+        id: 1,
+        question: "Qual sua situação atual de moradia?",
+        type: 'single',
+        options: [
+          { value: "moro-aluguel", label: "Moro de aluguel", points: 25 },
+          { value: "moro-familia", label: "Moro com a família", points: 30 },
+          { value: "casa-propria", label: "Tenho casa própria", points: 15 },
+          { value: "outros", label: "Outros", points: 20 }
+        ]
+      },
+      {
+        id: 2,
+        question: "Qual sua renda familiar mensal?",
+        type: 'single',
+        options: [
+          { value: "ate-2400", label: "Até R$ 2.400 (Faixa 1)", points: 30 },
+          { value: "2401-4400", label: "R$ 2.401 a R$ 4.400 (Faixa 1,5)", points: 28 },
+          { value: "4401-7000", label: "R$ 4.401 a R$ 7.000 (Faixa 2)", points: 25 },
+          { value: "7001-10000", label: "R$ 7.001 a R$ 10.000 (Faixa 3)", points: 22 },
+          { value: "acima-10000", label: "Acima de R$ 10.000", points: 10 }
+        ]
+      },
+      {
+        id: 3,
+        question: "Já possui financiamento imobiliário?",
+        type: 'single',
+        options: [
+          { value: "primeiro", label: "Não, seria o primeiro", points: 30 },
+          { value: "quitei", label: "Sim, mas já quitei", points: 20 },
+          { value: "pagando", label: "Sim, ainda estou pagando", points: 5 }
+        ]
+      },
+      {
+        id: 4,
+        question: "Qual região de Natal prefere?",
+        type: 'single',
+        options: [
+          { value: "zona-norte", label: "Zona Norte", points: 25 },
+          { value: "zona-oeste", label: "Zona Oeste", points: 25 },
+          { value: "zona-sul", label: "Zona Sul", points: 20 },
+          { value: "grande-natal", label: "Grande Natal", points: 22 },
+          { value: "litoral-sul", label: "Litoral Sul", points: 18 }
+        ]
+      },
+      {
+        id: 5,
+        question: "Qual o prazo desejado para compra?",
+        type: 'single',
+        options: [
+          { value: "ate-3-meses", label: "Até 3 meses", points: 30 },
+          { value: "3-6-meses", label: "3 a 6 meses", points: 25 },
+          { value: "6-meses-1-ano", label: "6 meses a 1 ano", points: 20 },
+          { value: "mais-1-ano", label: "Mais de 1 ano", points: 10 }
+        ]
+      },
+      {
+        id: 6,
+        question: "Qual valor pode dar de entrada?",
+        type: 'single',
+        options: [
+          { value: "sem-entrada", label: "Não tenho entrada", points: 15 },
+          { value: "ate-5000", label: "Até R$ 5.000", points: 20 },
+          { value: "5000-15000", label: "R$ 5.000 a R$ 15.000", points: 25 },
+          { value: "15000-30000", label: "R$ 15.000 a R$ 30.000", points: 28 },
+          { value: "acima-30000", label: "Acima de R$ 30.000", points: 30 }
+        ]
+      },
+      {
+        id: 7,
+        question: "Trabalha com carteira assinada?",
+        type: 'single',
+        options: [
+          { value: "sim-mais-2-anos", label: "Sim, mais de 2 anos", points: 30 },
+          { value: "sim-menos-2-anos", label: "Sim, menos de 2 anos", points: 25 },
+          { value: "autonomo", label: "Não, sou autônomo", points: 15 },
+          { value: "empresario", label: "Não, sou empresário", points: 20 }
+        ]
+      },
+      {
+        id: 8,
+        question: "Seu nome está no SPC/Serasa?",
+        type: 'single',
+        options: [
+          { value: "limpo", label: "Não, está limpo", points: 30 },
+          { value: "valores-baixos", label: "Sim, mas são valores baixos", points: 20 },
+          { value: "valores-altos", label: "Sim, valores altos", points: 5 },
+          { value: "nao-sei", label: "Não sei", points: 10 }
+        ]
+      }
+    ];
+
+    const answers: Record<number, string[]> = {};
+
+    const questionTexts = questions.map(q => {
+      const userAnswers = answers[q.id] || [];
+      const answerTexts = userAnswers.map(answer => {
+        const option = q.options.find(opt => opt.value === answer);
+        return option?.label || answer;
+      });
+      return `${q.question}\nR: ${answerTexts.join(', ')}`;
+    }).join('\n\n');
+
+    return `🎯 PERFIL CERTO - CLIENTE MCMV NATAL/RN\n\n👤 Nome: ${name}\n📞 Telefone: ${phone}\n🏆 Pontuação: ${score} pontos\n📍 Região: NATAL/RN\n\n📋 RESPOSTAS COMPLETAS:\n${questionTexts}\n\n✅ STATUS: QUALIFICADO para MCMV em Natal!\n\n🎯 Este cliente foi pré-qualificado através do nosso sistema de IA especializado em MCMV para Natal/RN.\n\n🚀 Cliente pronto para atendimento!`;
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">

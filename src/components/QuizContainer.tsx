@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -19,102 +18,92 @@ export interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "Em qual região de Natal você atua como corretor?",
+    question: "Qual sua situação atual de moradia?",
     type: 'single',
     options: [
-      { value: "zona-norte", label: "Zona Norte (Redinha, Igapó)", points: 20 },
-      { value: "zona-sul", label: "Zona Sul (Ponta Negra, Capim Macio)", points: 25 },
-      { value: "zona-leste", label: "Zona Leste (Lagoa Nova, Tirol)", points: 25 },
-      { value: "zona-oeste", label: "Zona Oeste (Cidade da Esperança)", points: 20 },
-      { value: "multiplas-zonas", label: "Múltiplas zonas", points: 30 }
+      { value: "moro-aluguel", label: "Moro de aluguel", points: 25 },
+      { value: "moro-familia", label: "Moro com a família", points: 30 },
+      { value: "casa-propria", label: "Tenho casa própria", points: 15 },
+      { value: "outros", label: "Outros", points: 20 }
     ]
   },
   {
     id: 2,
-    question: "Há quanto tempo você trabalha no mercado imobiliário de Natal?",
+    question: "Qual sua renda familiar mensal?",
     type: 'single',
     options: [
-      { value: "menos-1-ano", label: "Menos de 1 ano", points: 10 },
-      { value: "1-3-anos", label: "1 a 3 anos", points: 15 },
-      { value: "3-5-anos", label: "3 a 5 anos", points: 20 },
-      { value: "mais-5-anos", label: "Mais de 5 anos", points: 25 }
+      { value: "ate-2400", label: "Até R$ 2.400 (Faixa 1)", points: 30 },
+      { value: "2401-4400", label: "R$ 2.401 a R$ 4.400 (Faixa 1,5)", points: 28 },
+      { value: "4401-7000", label: "R$ 4.401 a R$ 7.000 (Faixa 2)", points: 25 },
+      { value: "7001-10000", label: "R$ 7.001 a R$ 10.000 (Faixa 3)", points: 22 },
+      { value: "acima-10000", label: "Acima de R$ 10.000", points: 10 }
     ]
   },
   {
     id: 3,
-    question: "Qual sua experiência com financiamento MCMV em Natal?",
+    question: "Já possui financiamento imobiliário?",
     type: 'single',
     options: [
-      { value: "nenhuma", label: "Nenhuma experiência", points: 5 },
-      { value: "pouca", label: "Pouca experiência", points: 15 },
-      { value: "moderada", label: "Experiência moderada", points: 20 },
-      { value: "muita", label: "Muita experiência", points: 25 }
+      { value: "primeiro", label: "Não, seria o primeiro", points: 30 },
+      { value: "quitei", label: "Sim, mas já quitei", points: 20 },
+      { value: "pagando", label: "Sim, ainda estou pagando", points: 5 }
     ]
   },
   {
     id: 4,
-    question: "Quantos imóveis você vende por mês em Natal?",
+    question: "Qual região de Natal prefere?",
     type: 'single',
     options: [
-      { value: "0-2", label: "0 a 2 imóveis", points: 10 },
-      { value: "3-5", label: "3 a 5 imóveis", points: 15 },
-      { value: "6-10", label: "6 a 10 imóveis", points: 20 },
-      { value: "mais-10", label: "Mais de 10 imóveis", points: 25 }
+      { value: "zona-norte", label: "Zona Norte", points: 25 },
+      { value: "zona-oeste", label: "Zona Oeste", points: 25 },
+      { value: "zona-sul", label: "Zona Sul", points: 20 },
+      { value: "grande-natal", label: "Grande Natal", points: 22 },
+      { value: "litoral-sul", label: "Litoral Sul", points: 18 }
     ]
   },
   {
     id: 5,
-    question: "Qual o principal perfil de cliente que você atende em Natal?",
+    question: "Qual o prazo desejado para compra?",
     type: 'single',
     options: [
-      { value: "primeira-casa", label: "Primeira casa própria", points: 25 },
-      { value: "investidor", label: "Investidores", points: 20 },
-      { value: "upgrade", label: "Upgrade de imóvel", points: 15 },
-      { value: "todos", label: "Todos os perfis", points: 22 }
+      { value: "ate-3-meses", label: "Até 3 meses", points: 30 },
+      { value: "3-6-meses", label: "3 a 6 meses", points: 25 },
+      { value: "6-meses-1-ano", label: "6 meses a 1 ano", points: 20 },
+      { value: "mais-1-ano", label: "Mais de 1 ano", points: 10 }
     ]
   },
   {
     id: 6,
-    question: "Como você atualmente capta clientes em Natal?",
-    type: 'multiple',
+    question: "Qual valor pode dar de entrada?",
+    type: 'single',
     options: [
-      { value: "redes-sociais", label: "Redes sociais", points: 12 },
-      { value: "indicacao", label: "Indicação de clientes", points: 18 },
-      { value: "anuncios-pagos", label: "Anúncios pagos online", points: 20 },
-      { value: "imobiliaria", label: "Através de imobiliária", points: 15 }
+      { value: "sem-entrada", label: "Não tenho entrada", points: 15 },
+      { value: "ate-5000", label: "Até R$ 5.000", points: 20 },
+      { value: "5000-15000", label: "R$ 5.000 a R$ 15.000", points: 25 },
+      { value: "15000-30000", label: "R$ 15.000 a R$ 30.000", points: 28 },
+      { value: "acima-30000", label: "Acima de R$ 30.000", points: 30 }
     ]
   },
   {
     id: 7,
-    question: "Qual sua maior dificuldade para vender mais em Natal?",
+    question: "Trabalha com carteira assinada?",
     type: 'single',
     options: [
-      { value: "leads-qualificados", label: "Falta de leads qualificados", points: 25 },
-      { value: "concorrencia", label: "Muita concorrência", points: 15 },
-      { value: "documentacao", label: "Burocracia e documentação", points: 18 },
-      { value: "conhecimento-mcmv", label: "Conhecimento sobre MCMV", points: 20 }
+      { value: "sim-mais-2-anos", label: "Sim, mais de 2 anos", points: 30 },
+      { value: "sim-menos-2-anos", label: "Sim, menos de 2 anos", points: 25 },
+      { value: "autonomo", label: "Não, sou autônomo", points: 15 },
+      { value: "empresario", label: "Não, sou empresário", points: 20 }
     ]
   },
   {
     id: 8,
-    question: "Qual sua meta de vendas para os próximos 6 meses em Natal?",
+    question: "Seu nome está no SPC/Serasa?",
     type: 'single',
     options: [
-      { value: "5-10", label: "5 a 10 vendas", points: 15 },
-      { value: "10-20", label: "10 a 20 vendas", points: 20 },
-      { value: "20-40", label: "20 a 40 vendas", points: 25 },
-      { value: "mais-40", label: "Mais de 40 vendas", points: 30 }
-    ]
-  },
-  {
-    id: 9,
-    question: "Você gostaria de receber leads pré-qualificados MCMV em Natal diariamente?",
-    type: 'single',
-    options: [
-      { value: "sim-muito", label: "Sim, com certeza!", points: 30 },
-      { value: "sim-talvez", label: "Sim, tenho interesse", points: 20 },
-      { value: "nao-sei", label: "Preciso saber mais", points: 10 },
-      { value: "nao", label: "Não tenho interesse", points: 0 }
+      { value: "limpo", label: "Não, está limpo", points: 30 },
+      { value: "valores-baixos", label: "Sim, mas são valores baixos", points: 20 },
+      { value: "valores-altos", label: "Sim, valores altos", points: 5 },
+      { value: "nao-sei", label: "Não sei", points: 10 }
     ]
   }
 ];
