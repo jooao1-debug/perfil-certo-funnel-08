@@ -23,18 +23,18 @@ const ScorePopup = ({ points, totalScore }: ScorePopupProps) => {
             : 'scale-50 opacity-0 translate-y-10'
         }`}
       >
-        <div className="bg-gradient-to-r from-green-500 via-yellow-400 to-blue-500 text-white p-8 rounded-2xl shadow-2xl border-4 border-white animate-pulse">
+        <div className="bg-green-600 text-white p-8 rounded-2xl shadow-2xl border-4 border-yellow-400">
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              <Trophy className="h-16 w-16 text-yellow-200 animate-bounce" />
+              <Trophy className="h-16 w-16 text-yellow-400" />
             </div>
             
-            <h3 className="text-3xl font-bold mb-2">
-              +{points} Pontos! 🎉
+            <h3 className="text-3xl font-bold mb-2 text-yellow-400">
+              +{points} Pontos! 💰
             </h3>
             
             <p className="text-xl mb-4">
-              Sua pontuação: <span className="font-bold text-yellow-200">{totalScore}</span>
+              Sua pontuação: <span className="font-bold text-yellow-400">{totalScore}</span>
             </p>
             
             <div className="flex justify-center space-x-1 mb-4">
@@ -43,17 +43,14 @@ const ScorePopup = ({ points, totalScore }: ScorePopupProps) => {
                   key={i}
                   className={`h-6 w-6 ${
                     i < Math.min(5, Math.floor(points / 5))
-                      ? 'text-yellow-200 fill-current'
-                      : 'text-yellow-200/50'
-                  } animate-pulse`}
-                  style={{
-                    animationDelay: `${i * 0.1}s`
-                  }}
+                      ? 'text-yellow-400 fill-current'
+                      : 'text-yellow-200'
+                  }`}
                 />
               ))}
             </div>
             
-            <p className="text-lg font-semibold animate-bounce">
+            <p className="text-lg font-semibold text-blue-200">
               Continue jogando! 🚀
             </p>
           </div>

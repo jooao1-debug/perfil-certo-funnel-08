@@ -36,9 +36,9 @@ const QuizQuestion = ({ question, onAnswer }: QuizQuestionProps) => {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+    <Card className="w-full max-w-2xl mx-auto shadow-lg border-0 bg-white">
       <CardContent className="p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center leading-relaxed">
+        <h2 className="text-2xl font-bold text-blue-800 mb-8 text-center leading-relaxed">
           {question.question}
         </h2>
 
@@ -52,16 +52,16 @@ const QuizQuestion = ({ question, onAnswer }: QuizQuestionProps) => {
               {question.options.map((option) => (
                 <div
                   key={option.value}
-                  className="flex items-center space-x-3 p-4 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-all duration-200 cursor-pointer"
+                  className="flex items-center space-x-3 p-4 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all duration-200 cursor-pointer"
                 >
                   <RadioGroupItem value={option.value} id={option.value} />
                   <Label
                     htmlFor={option.value}
-                    className="flex-1 cursor-pointer text-base font-medium"
+                    className="flex-1 cursor-pointer text-base font-medium text-gray-800"
                   >
                     {option.label}
                   </Label>
-                  <span className="text-sm text-green-600 font-semibold">
+                  <span className="text-sm text-yellow-600 font-semibold">
                     +{option.points} pts
                   </span>
                 </div>
@@ -72,7 +72,7 @@ const QuizQuestion = ({ question, onAnswer }: QuizQuestionProps) => {
               {question.options.map((option) => (
                 <div
                   key={option.value}
-                  className="flex items-center space-x-3 p-4 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200"
+                  className="flex items-center space-x-3 p-4 rounded-lg border border-gray-200 hover:border-green-400 hover:bg-green-50 transition-all duration-200"
                 >
                   <Checkbox
                     id={option.value}
@@ -83,11 +83,11 @@ const QuizQuestion = ({ question, onAnswer }: QuizQuestionProps) => {
                   />
                   <Label
                     htmlFor={option.value}
-                    className="flex-1 cursor-pointer text-base font-medium"
+                    className="flex-1 cursor-pointer text-base font-medium text-gray-800"
                   >
                     {option.label}
                   </Label>
-                  <span className="text-sm text-blue-600 font-semibold">
+                  <span className="text-sm text-yellow-600 font-semibold">
                     +{option.points} pts
                   </span>
                 </div>
@@ -100,7 +100,7 @@ const QuizQuestion = ({ question, onAnswer }: QuizQuestionProps) => {
           <Button
             onClick={handleSubmit}
             disabled={selectedAnswers.length === 0}
-            className="bg-gradient-to-r from-green-600 via-yellow-500 to-blue-600 hover:from-green-700 hover:via-yellow-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Confirmar Resposta
             <ArrowRight className="ml-2 h-5 w-5" />

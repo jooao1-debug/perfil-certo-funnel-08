@@ -19,7 +19,19 @@ export interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "Há quanto tempo você atua como corretor de imóveis?",
+    question: "Em qual região de Natal você atua como corretor?",
+    type: 'single',
+    options: [
+      { value: "zona-norte", label: "Zona Norte (Redinha, Igapó)", points: 20 },
+      { value: "zona-sul", label: "Zona Sul (Ponta Negra, Capim Macio)", points: 25 },
+      { value: "zona-leste", label: "Zona Leste (Lagoa Nova, Tirol)", points: 25 },
+      { value: "zona-oeste", label: "Zona Oeste (Cidade da Esperança)", points: 20 },
+      { value: "multiplas-zonas", label: "Múltiplas zonas", points: 30 }
+    ]
+  },
+  {
+    id: 2,
+    question: "Há quanto tempo você trabalha no mercado imobiliário de Natal?",
     type: 'single',
     options: [
       { value: "menos-1-ano", label: "Menos de 1 ano", points: 10 },
@@ -29,8 +41,19 @@ const questions: Question[] = [
     ]
   },
   {
-    id: 2,
-    question: "Quantos imóveis você vende por mês em média?",
+    id: 3,
+    question: "Qual sua experiência com financiamento MCMV em Natal?",
+    type: 'single',
+    options: [
+      { value: "nenhuma", label: "Nenhuma experiência", points: 5 },
+      { value: "pouca", label: "Pouca experiência", points: 15 },
+      { value: "moderada", label: "Experiência moderada", points: 20 },
+      { value: "muita", label: "Muita experiência", points: 25 }
+    ]
+  },
+  {
+    id: 4,
+    question: "Quantos imóveis você vende por mês em Natal?",
     type: 'single',
     options: [
       { value: "0-2", label: "0 a 2 imóveis", points: 10 },
@@ -40,79 +63,57 @@ const questions: Question[] = [
     ]
   },
   {
-    id: 3,
-    question: "Você já trabalhou com financiamento habitacional MCMV?",
-    type: 'single',
-    options: [
-      { value: "nunca", label: "Nunca trabalhei", points: 5 },
-      { value: "pouco", label: "Pouca experiência", points: 15 },
-      { value: "moderado", label: "Experiência moderada", points: 20 },
-      { value: "muito", label: "Muita experiência", points: 25 }
-    ]
-  },
-  {
-    id: 4,
-    question: "Qual o principal desafio na captação de leads qualificados?",
-    type: 'single',
-    options: [
-      { value: "quantidade", label: "Quantidade insuficiente de leads", points: 15 },
-      { value: "qualidade", label: "Qualidade dos leads é baixa", points: 20 },
-      { value: "conversao", label: "Dificuldade na conversão", points: 18 },
-      { value: "concorrencia", label: "Muita concorrência", points: 12 }
-    ]
-  },
-  {
     id: 5,
-    question: "Como você atualmente capta seus clientes?",
-    type: 'multiple',
+    question: "Qual o principal perfil de cliente que você atende em Natal?",
+    type: 'single',
     options: [
-      { value: "redes-sociais", label: "Redes sociais", points: 10 },
-      { value: "indicacao", label: "Indicação", points: 15 },
-      { value: "anuncios", label: "Anúncios pagos", points: 20 },
-      { value: "portal", label: "Portais imobiliários", points: 12 }
+      { value: "primeira-casa", label: "Primeira casa própria", points: 25 },
+      { value: "investidor", label: "Investidores", points: 20 },
+      { value: "upgrade", label: "Upgrade de imóvel", points: 15 },
+      { value: "todos", label: "Todos os perfis", points: 22 }
     ]
   },
   {
     id: 6,
-    question: "Qual sua meta de vendas para os próximos 6 meses?",
-    type: 'single',
+    question: "Como você atualmente capta clientes em Natal?",
+    type: 'multiple',
     options: [
-      { value: "5-10", label: "5 a 10 vendas", points: 10 },
-      { value: "10-20", label: "10 a 20 vendas", points: 15 },
-      { value: "20-50", label: "20 a 50 vendas", points: 20 },
-      { value: "mais-50", label: "Mais de 50 vendas", points: 25 }
+      { value: "redes-sociais", label: "Redes sociais", points: 12 },
+      { value: "indicacao", label: "Indicação de clientes", points: 18 },
+      { value: "anuncios-pagos", label: "Anúncios pagos online", points: 20 },
+      { value: "imobiliaria", label: "Através de imobiliária", points: 15 }
     ]
   },
   {
     id: 7,
-    question: "Você tem conhecimento sobre documentação do MCMV?",
+    question: "Qual sua maior dificuldade para vender mais em Natal?",
     type: 'single',
     options: [
-      { value: "basico", label: "Conhecimento básico", points: 10 },
-      { value: "intermediario", label: "Conhecimento intermediário", points: 15 },
-      { value: "avancado", label: "Conhecimento avançado", points: 20 },
-      { value: "especialista", label: "Sou especialista", points: 25 }
+      { value: "leads-qualificados", label: "Falta de leads qualificados", points: 25 },
+      { value: "concorrencia", label: "Muita concorrência", points: 15 },
+      { value: "documentacao", label: "Burocracia e documentação", points: 18 },
+      { value: "conhecimento-mcmv", label: "Conhecimento sobre MCMV", points: 20 }
     ]
   },
   {
     id: 8,
-    question: "Qual região você atende principalmente?",
+    question: "Qual sua meta de vendas para os próximos 6 meses em Natal?",
     type: 'single',
     options: [
-      { value: "capital", label: "Capital", points: 20 },
-      { value: "grande-capital", label: "Grande capital", points: 18 },
-      { value: "interior", label: "Interior", points: 15 },
-      { value: "multiplas", label: "Múltiplas regiões", points: 25 }
+      { value: "5-10", label: "5 a 10 vendas", points: 15 },
+      { value: "10-20", label: "10 a 20 vendas", points: 20 },
+      { value: "20-40", label: "20 a 40 vendas", points: 25 },
+      { value: "mais-40", label: "Mais de 40 vendas", points: 30 }
     ]
   },
   {
     id: 9,
-    question: "Você gostaria de receber leads pré-qualificados diariamente?",
+    question: "Você gostaria de receber leads pré-qualificados MCMV em Natal diariamente?",
     type: 'single',
     options: [
-      { value: "sim-muito", label: "Sim, com certeza!", points: 25 },
-      { value: "sim-talvez", label: "Sim, talvez", points: 15 },
-      { value: "nao-sei", label: "Não sei", points: 5 },
+      { value: "sim-muito", label: "Sim, com certeza!", points: 30 },
+      { value: "sim-talvez", label: "Sim, tenho interesse", points: 20 },
+      { value: "nao-sei", label: "Preciso saber mais", points: 10 },
       { value: "nao", label: "Não tenho interesse", points: 0 }
     ]
   }
@@ -127,12 +128,29 @@ const QuizContainer = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const playScoreSound = () => {
-    // Simula som de caixa registradora
-    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmccAj2Yz/DJayYHKHDr+tOOOggOUrHn6Y5cFwlEnN3vpm8dAjuXzu/UfS4MJInT8tyMOgkTSK3n668FHxo');
-    audio.play().catch(() => {
-      // Fallback se o áudio não funcionar
-      console.log('Ding! +' + getQuestionPoints() + ' pontos!');
+  const playMoneySound = () => {
+    // Som de dinheiro/caixa registradora mais realista
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    
+    // Criar sequência de tons para simular som de dinheiro
+    const frequencies = [800, 600, 400, 300];
+    
+    frequencies.forEach((freq, index) => {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
+      oscillator.type = 'square';
+      
+      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01 + (index * 0.1));
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2 + (index * 0.1));
+      
+      oscillator.start(audioContext.currentTime + (index * 0.1));
+      oscillator.stop(audioContext.currentTime + 0.3 + (index * 0.1));
     });
   };
 
@@ -156,7 +174,7 @@ const QuizContainer = () => {
     
     setScore(prev => prev + points);
     setShowScorePopup(true);
-    playScoreSound();
+    playMoneySound();
     
     setTimeout(() => {
       setShowScorePopup(false);
@@ -194,7 +212,7 @@ const QuizContainer = () => {
       return `${q.question}\nR: ${answerTexts.join(', ')}`;
     }).join('\n\n');
 
-    return `🎯 RESULTADO DO PERFIL CERTO - MCMV\n\n👤 Nome: ${name}\n📞 Telefone: ${phone}\n🏆 Pontuação: ${score} pontos\n\n📋 RESPOSTAS:\n${questionTexts}\n\n✅ STATUS: APROVADO para receber leads quentes do MCMV!\n\n🎯 Este funil foi personalizado para sua região e perfil profissional.\n\n🚀 Solicito contato para ativação do sistema de IA qualificado!`;
+    return `🎯 PERFIL CERTO - CORRETOR NATAL/RN\n\n👤 Nome: ${name}\n📞 Telefone: ${phone}\n🏆 Pontuação: ${score} pontos\n📍 Região: NATAL/RN\n\n📋 RESPOSTAS COMPLETAS:\n${questionTexts}\n\n✅ STATUS: APROVADO para receber leads MCMV em Natal!\n\n🎯 Este funil foi personalizado especificamente para o mercado imobiliário de Natal/RN e adaptado ao perfil de corretores locais.\n\n🚀 Solicito contato para ativação do sistema de IA qualificado para Natal!`;
   };
 
   if (isCompleted) {
@@ -213,11 +231,11 @@ const QuizContainer = () => {
   const progress = ((currentQuestion) / questions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-yellow-50 to-blue-50 p-4">
+    <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Perfil Certo - Quiz MCMV</h1>
+          <h1 className="text-2xl font-bold text-blue-800 mb-4">Perfil Certo - Quiz Corretor Natal/RN</h1>
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm text-gray-600">
               Pergunta {currentQuestion + 1} de {questions.length}
