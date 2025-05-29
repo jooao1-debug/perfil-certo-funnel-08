@@ -90,7 +90,7 @@ const Index = () => {
               <Star className="h-5 w-5 text-yellow-500 fill-current" />
               <Star className="h-5 w-5 text-yellow-500 fill-current" />
             </div>
-            <span className="font-semibold">+200 corretores aprovados em Natal</span>
+            <span className="font-semibold">+200 corretores utilizando em Natal</span>
           </div>
         </div>
       </div>

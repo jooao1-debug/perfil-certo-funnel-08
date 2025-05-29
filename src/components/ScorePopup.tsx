@@ -51,7 +51,7 @@ const ScorePopup = ({ points, totalScore }: ScorePopupProps) => {
             </div>
             
             <p className="text-lg font-semibold text-blue-200">
-              Continue jogando! 🚀
+              Concluído! 🚀
             </p>
           </div>
         </div>
